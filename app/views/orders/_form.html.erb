@@ -1,0 +1,56 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :orderno %>
+    <%= form.number_field :orderno %>
+  </div>
+
+  <div class="field">
+    <%= form.label :trackno %>
+    <%= form.text_field :trackno %>
+  </div>
+
+  <div class="field">
+    <%= form.label :paytype %>
+    <%= form.text_field :paytype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total %>
+    <%= form.text_field :total %>
+  </div>
+
+  <div class="field">
+    <%= form.label :orderdate %>
+    <%= form.datetime_select :orderdate %>
+  </div>
+  <%= form.fields_for :orderproducts do |f| %>
+    <div class="field">
+      <%= f.label :quantity %>
+      <%= f.text_field :quantity %>
+    </div>
+    <div class="field" >
+      <%= f.label :name %>
+      <%= f.select :product_id,options_for_select(Product.all.collect{|c| [c.id]}),class: 'form-control' %>
+    </div> 
+  <% end %>  
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id,:value=>current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
