@@ -10,47 +10,63 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :orderno %>
-    <%= form.number_field :orderno %>
-  </div>
-
-  <div class="field">
-    <%= form.label :trackno %>
-    <%= form.text_field :trackno %>
-  </div>
-
-  <div class="field">
-    <%= form.label :paytype %>
-    <%= form.text_field :paytype %>
-  </div>
-
-  <div class="field">
-    <%= form.label :total %>
-    <%= form.text_field :total %>
-  </div>
-
-  <div class="field">
-    <%= form.label :orderdate %>
-    <%= form.datetime_select :orderdate %>
-  </div>
-  <%= form.fields_for :orderproducts do |f| %>
+  <div class="form-group">
     <div class="field">
-      <%= f.label :quantity %>
-      <%= f.text_field :quantity %>
+      <%= form.label :orderno %>
+      <%= form.number_field :orderno ,:value =>"#{rand(100..1000)}",:readonly => true,class:"form-control"%>
     </div>
-    <div class="field" >
-      <%= f.label :name %>
-      <%= f.select :product_id,options_for_select(Product.all.collect{|c| [c.id]}),class: 'form-control' %>
-    </div> 
-  <% end %>  
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id,:value=>current_user.id %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="field">
+      <%= form.label :trackno %>
+      <%= form.text_field :trackno, :value =>"#{rand(10000..1000000)}" ,class:"form-control"%>
+    </div>
+
+    <div class="field">
+      <%= form.label :paytype %>
+      <%= form.text_field :paytype ,class:"form-control"%>
+    </div>
+
+    
+
+    <div class="field">
+      <%= form.label :orderdate %>
+      <%= form.datetime_select :orderdate ,class:"form-control"%>
+    </div>
+    </div>
+    <%= form.fields_for :orderproducts do |f| %>
+      <div class="form-group">
+        <div class="field" >
+          <%= f.label :product_id %>
+          <%= f.select :product_id,options_for_select(Product.all.collect{|c| [c.id]}), class: 'form-control' %>
+        </div> 
+          
+      <div class="field">
+        <%= f.label :quantity %>
+        <%= f.text_field :quantity,class:"form-control" %>
+      </div>
+      </div>
+    <% end %> 
+    <div class="field">
+      <%= form.label :total %>
+      <%= form.text_field :total,class:'form-control' %>
+    </div>
+  
+    <div class="form-group"> 
+    <div class="field">
+      <%= form.label :user_id %>
+      <%= form.text_field :user_id, :value=>current_user.id ,class:"form-control"%>
+    </div>
+    <div class="field">
+      <%= form.label :address_id %>
+      <%= form.text_field :address_id, class:"form-control"%>
+    </div>
+    <div class="field">
+      <%= form.hidden_field :order_id, :value => 1%>
+    </div>
+    <div class="actions">
+      <%= form.submit class: 'btn btn-default'%>
+    </div>
+    
+    </div>
+  
 <% end %>

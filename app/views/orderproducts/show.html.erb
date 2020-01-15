@@ -7,12 +7,12 @@
 
 <p>
   <strong>Product:</strong>
-  <%= @orderproduct.product_id %>
+  <%= @orderproduct.product.name %>
 </p>
 
 <p>
   <strong>Order:</strong>
-  <%= @orderproduct.order_id %>
+  <%= @orderproduct.order.orderno %>
 </p>
 
 <%= link_to 'Edit', edit_orderproduct_path(@orderproduct) %> |

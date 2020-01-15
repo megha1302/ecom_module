@@ -16,8 +16,8 @@
     <% @orderproducts.each do |orderproduct| %>
       <tr>
         <td><%= orderproduct.quantity %></td>
-        <td><%= orderproduct.product_id %></td>
-        <td><%= orderproduct.order_id %></td>
+        <td><%= orderproduct.product.name %></td>
+        <td><%= orderproduct.order.orderno %></td>
         <td><%= link_to 'Show', orderproduct %></td>
         <td><%= link_to 'Edit', edit_orderproduct_path(orderproduct) %></td>
         <td><%= link_to 'Destroy', orderproduct, method: :delete, data: { confirm: 'Are you sure?' } %></td>

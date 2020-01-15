@@ -44,6 +44,10 @@ ActiveRecord::Schema.define(version: 2020_01_14_173141) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "address_id", null: false
+    t.bigint "order_id", null: false
+    t.index ["address_id"], name: "index_orders_on_address_id"
+    t.index ["order_id"], name: "index_orders_on_order_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

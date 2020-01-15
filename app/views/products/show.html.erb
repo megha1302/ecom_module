@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<div class='prod'>
+<center>
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
@@ -16,14 +17,19 @@
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= @product.image %>
+  <strong>Image:</strong><br>
+  <%= image_tag(@product.image, :size => "200x200") %>
 </p>
 
 <p>
   <strong>Prosku:</strong>
   <%= @product.prosku %>
 </p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+</center>
+</div>
+<br>
+<br>
+<center>  
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Back', products_path %>
+</center>
