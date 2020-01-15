@@ -2,22 +2,22 @@
 
 <h1>Orderproducts</h1>
 
-<table>
+<table class="table table-striped table-stripped">
   <thead>
     <tr>
-      <th>Quantity</th>
+      <th>OrderNo</th>
       <th>Product</th>
-      <th>Order</th>
-      <th colspan="3"></th>
+      <th>Quantity</th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @orderproducts.each do |orderproduct| %>
       <tr>
-        <td><%= orderproduct.quantity %></td>
-        <td><%= orderproduct.product.name %></td>
         <td><%= orderproduct.order.orderno %></td>
+        <td><%= orderproduct.product.name %></td>
+        <td><%= orderproduct.quantity %></td>
         <td><%= link_to 'Show', orderproduct %></td>
         <td><%= link_to 'Edit', edit_orderproduct_path(orderproduct) %></td>
         <td><%= link_to 'Destroy', orderproduct, method: :delete, data: { confirm: 'Are you sure?' } %></td>

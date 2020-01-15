@@ -37,7 +37,7 @@
       <div class="form-group">
         <div class="field" >
           <%= f.label :product_id %>
-          <%= f.select :product_id,options_for_select(Product.all.collect{|c| [c.id]}), class: 'form-control' %>
+          <%= f.select :product_id,options_for_select(Product.all.collect{|c| [c.name,c.id]}), class: 'form-control' %>
         </div> 
           
       <div class="field">
