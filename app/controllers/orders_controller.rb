@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :required_user
  
   # GET /orders
   # GET /orders.json
@@ -67,7 +68,13 @@ class OrdersController < ApplicationController
     def set_order
       @order = Order.find(params[:id])
     end
-     
+
+    def required_user
+      if logged_in?
+      else
+        redirect_to root_path
+      end
+    end 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params

@@ -40,10 +40,10 @@
           <%= f.select :product_id,options_for_select(Product.all.collect{|c| [c.name,c.id]}), class: 'form-control' %>
         </div> 
           
-      <div class="field">
-        <%= f.label :quantity %>
-        <%= f.text_field :quantity,class:"form-control" %>
-      </div>
+        <div class="field">
+          <%= f.label :quantity %>
+          <%= f.text_field :quantity,class:"form-control" %>
+        </div>
       </div>
     <% end %> 
     <div class="field">
@@ -54,11 +54,12 @@
     <div class="form-group"> 
     <div class="field">
       <%= form.label :user_id %>
-      <%= form.text_field :user_id, :value=>current_user.id ,class:"form-control"%>
+      <%= form.text_field :user_id, :value=>current_user.id ,:readonly =>true,class:"form-control"%>
     </div>
     <div class="field">
       <%= form.label :address_id %>
-      <%= form.text_field :address_id, class:"form-control"%>
+      <%= form.select :address_id,options_for_select(current_user.addresses.all.collect{|c| [c.addtype,c.id]}), class: 'form-control' %>
+     
     </div>
     <div class="field">
       <%= form.hidden_field :order_id, :value => 1%>

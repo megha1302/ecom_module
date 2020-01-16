@@ -17,19 +17,22 @@
   </thead>
 
   <tbody>
+    
     <% @addresses.each do |address| %>
-      <tr>
-        <td><%= address.addtype %></td>
-        <td><%= address.line1 %></td>
-        <td><%= address.line2 %></td>
-        <td><%= address.city %></td>
-        <td><%= address.pincode %></td>
-        <td><%= address.state %></td>
-        <td><%= address.user.firstname %></td>
-        <td><%= link_to 'Show', address %></td>
-        <td><%= link_to 'Edit', edit_address_path(address) %></td>
-        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if current_user.admin? || current_user.id == address.user_id %>
+        <tr>
+          <td><%= address.addtype %></td>
+          <td><%= address.line1 %></td>
+          <td><%= address.line2 %></td>
+          <td><%= address.city %></td>
+          <td><%= address.pincode %></td>
+          <td><%= address.state %></td>
+          <td><%= address.user.firstname %></td>
+          <td><%= link_to 'Show', address %></td>
+          <td><%= link_to 'Edit', edit_address_path(address) %></td>
+          <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

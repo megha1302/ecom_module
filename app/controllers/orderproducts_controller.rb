@@ -1,6 +1,6 @@
 class OrderproductsController < ApplicationController
   before_action :set_orderproduct, only: [:show, :edit, :update, :destroy]
-
+  before_action :required_user
   # GET /orderproducts
   # GET /orderproducts.json
   def index
@@ -67,6 +67,12 @@ class OrderproductsController < ApplicationController
       @orderproduct = Orderproduct.find(params[:id])
     end
 
+    def required_user
+      if logged_in?
+      else
+        redirect_to root_path
+      end
+    end 
     # Never trust parameters from the scary internet, only allow the white list through.
     def orderproduct_params
       params.require(:orderproduct).permit(:quantity, :product_id, :order_id)

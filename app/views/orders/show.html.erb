@@ -1,36 +1,72 @@
 <p id="notice"><%= notice %></p>
-
+<h4>Order Summary</h4>
+<hr class="bbox">
+<p>
+  <strong>OrdeId:</strong>
+  <%= @order.id %>
+</p>
 <p>
   <strong>Orderno:</strong>
   <%= @order.orderno %>
 </p>
-
 <p>
-  <strong>Trackno:</strong>
-  <%= @order.trackno %>
+  <% if current_user.admin?  %>
+    <strong>Trackno:</strong>
+    <%= @order.trackno %>
+  <% end %>  
 </p>
-
 <p>
   <strong>Paytype:</strong>
   <%= @order.paytype %>
 </p>
-
 <p>
   <strong>Total:</strong>
-  <%= @order.total %>
+  <% tot = 0 %>
+  <% @order.orderproducts.each do |order| %>
+    <% tot+=(order.product.price * order.quantity) %>
+  <% end %> 
+  <%= tot %> 
 </p>
-
 <p>
   <strong>Orderdate:</strong>
   <%= @order.orderdate %>
 </p>
 
+<hr class="bbox">
+
+<h4>UserInfo:</h4>
 <p>
   <strong>User:</strong>
-  <%= @order.user_id %>
+  <%= @order.user.firstname %>
+</p>
+<p>
+  <strong>EmailId:</strong>
+  <%= @order.user.email %>
 </p>
 
+<hr class="bbox">
 
+<h4>ProductInfo:</h4>
+<% @order.orderproducts.each do |order| %>
+  <p>
+    <strong>Product_id:</strong>
+    <%= order.product_id %>
+  </p>
+  <p>
+    <strong>Product_name:</strong>
+    <%= order.product.name %>
+  </p>
+  <p>
+    <strong>Price:</strong>
+    <%= order.product.price %>
+  </p>
+  <p>
+    <strong>Quantity:</strong>
+    <%= order.quantity%>
+  </p>
+<% end %>
+
+<hr class="bbox">
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

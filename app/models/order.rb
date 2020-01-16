@@ -4,6 +4,6 @@ class Order < ApplicationRecord
   has_many :products, through: :orderproducts
   accepts_nested_attributes_for :orderproducts
   accepts_nested_attributes_for :products
-  
-  
+ 
+   
 end
