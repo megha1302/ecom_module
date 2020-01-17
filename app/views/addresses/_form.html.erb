@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :line1 %>
-    <%= form.text_field :line1 %>
+    <%= form.text_field :line1,:required =>true %>
   </div>
 
   <div class="field">
@@ -28,22 +28,22 @@
 
   <div class="field">
     <%= form.label :city %>
-    <%= form.text_field :city %>
+    <%= form.text_field :city ,:required => true%>
   </div>
 
   <div class="field">
     <%= form.label :pincode %>
-    <%= form.number_field :pincode %>
+    <%= form.number_field :pincode ,:required =>true%>
   </div>
 
   <div class="field">
     <%= form.label :state %>
-    <%= form.text_field :state %>
+    <%= form.text_field :state ,:required =>true%>
   </div>
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.text_field :user_id ,:required =>true%>
   </div>
 
   <div class="actions">

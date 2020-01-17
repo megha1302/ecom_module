@@ -13,7 +13,7 @@
   <div class="form-group">
     <div class="field">
       <%= form.label :name %>
-      <%= form.text_field :name, class:"form-control"  %>
+      <%= form.text_field :name,:required =>'true', class:"form-control"  %>
     </div>
   
   <div class="field">
@@ -23,17 +23,17 @@
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.text_field :price, class:"form-control"  %>
+    <%= form.text_field :price, :required =>true, class:"form-control"  %>
   </div>
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_field :image,class:"form-control"  %>
+    <%= form.text_field :image,:required =>true,class:"form-control"  %>
   </div>
 
   <div class="field">
     <%= form.label :prosku %>
-    <%= form.text_field :prosku ,class:"form-control" %>
+    <%= form.text_field :prosku ,:required =>true,class:"form-control" %>
   </div>
 
   <div class="actions">
